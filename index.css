@@ -23,6 +23,26 @@ body {
 	height: 100%;
 	margin: 0 auto;
 }
+#container h1 {
+	text-align: center;
+	margin: 0;
+}
+#container h2 {
+	text-align: center;
+	margin: 0;
+	margin-bottom: 5px;
+	color: #999;
+	font-size: 110%;
+}
+#container a {
+	text-decoration: none;
+	margin-bottom: 10px;
+	color: rgba(67, 131, 47, 1);
+	font-size: 80%;
+}
+#container a:hover {
+	color: rgba(79, 237, 30, 1);
+}
 #player-one, #player-two {
 	width: 12pt;
 	font-size: 12pt;
