@@ -44,8 +44,24 @@ console.log(message);
 onBoardClick(x, y);
 } 
 
-var player_one_score = $('#player-one')[0];
-var player_two_score = $('#player-two')[0];
+var player_one_score = $('#player-one');
+var player_two_score = $('#player-two');
+
+
+function hiliteScore (player) { 
+var id = undefined;
+if (player  === PLAYER_ONE ) {
+id = '#player-one' 
+} else {
+id = '#player-two' 
+} 
+
+    $(id).effect(
+        "highlight",
+        { color: 'green'},
+        3000
+    );
+} 
 
 // shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh 
 // 
@@ -83,8 +99,8 @@ var TILE_HEIGHT = 100;
 var TILE_SPACING = 10;
 
 // Colors for everything 
-var BOARD_COLOR_BG = 'rgb(255, 255, 255)';
-var TILE_COLOR_EMPTY = 'black';
+var BOARD_COLOR_BG = '#999';
+var TILE_COLOR_EMPTY = '#777';
 var TILE_COLOR_X = 'red';
 var TILE_COLOR_O = 'blue';
 
@@ -265,8 +281,10 @@ if (wonGame() ) {
 // Score++ 
 if (currentPlayer  === PLAYER_ONE ) {
 PLAYER_ONE_POINTS = PLAYER_ONE_POINTS + 1 
+hiliteScore(PLAYER_ONE);
 } else {
 PLAYER_TWO_POINTS = PLAYER_TWO_POINTS + 1 
+hiliteScore(PLAYER_TWO);
 } 
 
 // Refreshing HTML with scores 

@@ -1,8 +1,8 @@
 quiet
   doge toe: doge tic-tac-toe in dogescript
 
-  Homepage: https://github.com/alexdantas/doge-toe
-  Author:   Alexandre Dantas (alexdantas) <eu@alexdantas.net>
+  Homepage:  https://github.com/alexdantas/doge-toe
+  Author:    Alexandre Dantas (alexdantas) <eu@alexdantas.net>
   License:   WTFPL
 
   Thanks to the following:
@@ -44,8 +44,24 @@ such onCanvasClick much event
     plz onBoardClick with x y
 wow
 
-very player_one_score is $('#player-one')[0]
-very player_two_score is $('#player-two')[0]
+very player_one_score is $('#player-one')
+very player_two_score is $('#player-two')
+
+
+such hiliteScore much player
+    very id
+    rly player is PLAYER_ONE
+        id is '#player-one'
+    but
+        id is '#player-two'
+    wow
+
+    $(id).effect(
+        "highlight",
+        { color: 'green'},
+        3000
+    );
+wow
 
 shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh
 shh
@@ -82,8 +98,8 @@ very TILE_HEIGHT  is 100
 very TILE_SPACING is 10
 
 shh Colors for everything
-very BOARD_COLOR_BG   is 'rgb(255, 255, 255)'
-very TILE_COLOR_EMPTY is 'black'
+very BOARD_COLOR_BG   is '#999'
+very TILE_COLOR_EMPTY is '#777'
 very TILE_COLOR_X     is 'red'
 very TILE_COLOR_O     is 'blue'
 
@@ -261,8 +277,10 @@ such onBoardClick much x y
         shh Score++
         rly currentPlayer is PLAYER_ONE
             PLAYER_ONE_POINTS is PLAYER_ONE_POINTS + 1
+            plz hiliteScore with PLAYER_ONE
         but
             PLAYER_TWO_POINTS is PLAYER_TWO_POINTS + 1
+            plz hiliteScore with PLAYER_TWO
         wow
 
         shh Refreshing HTML with scores
