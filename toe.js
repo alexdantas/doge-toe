@@ -176,12 +176,25 @@ if (boardX  < 0  || boardY  < 0 ) {
 var message = currentPlayer + ' clicked on ' + pixelToTileX(x) + ' ' + pixelToTileY(y) ;
 console.log(message);
 
+// Places thing on the board and check for winner 
+if (board[boardX][boardY]  !== TILE_EMPTY ) {
+        return;
+} 
+
+if (currentPlayer  === PLAYER_ONE ) {
+board[boardX][boardY] = TILE_X 
+} else {
+board[boardX][boardY] = TILE_O 
+} 
+drawBoard();
+
 // Switches the current player 
 if (currentPlayer  === PLAYER_ONE ) {
 currentPlayer = PLAYER_TWO 
 } else {
 currentPlayer = PLAYER_ONE 
 } 
+console.log('switched');
 } 
 
 // Gets called when the window is fully loaded. 

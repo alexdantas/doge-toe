@@ -174,14 +174,16 @@ such onBoardClick much x y
     plz console.loge with message
 
     shh Places thing on the board and check for winner
-    rly board[boardX][boardY] is TILE_EMPTY
-
-        rly currentPlayer is PLAYER_ONE
-            board[boardX][boardY] is TILE_X
-        but
-            board[boardX][boardY] is TILE_O
-        wow
+    rly board[boardX][boardY] not TILE_EMPTY
+        return;
     wow
+
+    rly currentPlayer is PLAYER_ONE
+    board[boardX][boardY] is TILE_X
+    but
+    board[boardX][boardY] is TILE_O
+    wow
+    plz drawBoard
 
     shh Switches the current player
     rly currentPlayer is PLAYER_ONE
@@ -189,6 +191,7 @@ such onBoardClick much x y
     but
         currentPlayer is PLAYER_ONE
     wow
+    plz console.loge with 'switched'
 wow
 
 shh Gets called when the window is fully loaded.
