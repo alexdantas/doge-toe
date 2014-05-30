@@ -44,8 +44,8 @@ such onCanvasClick much event
     plz onBoardClick with x y
 wow
 
-very player_one_score is $('#player-one')
-very player_two_score is $('#player-two')
+very player_one_score is $('#player-one')[0]
+very player_two_score is $('#player-two')[0]
 
 
 such hiliteScore much player
