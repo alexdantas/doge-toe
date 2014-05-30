@@ -134,9 +134,44 @@ such drawBoard
     wow
 wow
 
+shh Converts between pixel coordinates and tiles within a board.
+shh @return The board index for #x or -1 in case of error.
+shh @note   I know this is ugly as fuark...
+such pixelToTileX much x
+
+    much very counter as 0 next counter smaller 3 next counter more 1
+        rly x biggerish (counter*TILE_WIDTH + counter*TILE_SPACING) and x smallerish (TILE_WIDTH + counter*TILE_WIDTH + counter*TILE_SPACING)
+            return counter
+        wow
+    wow
+wow -1
+
+shh Converts between pixel coordinates and tiles within a board.
+shh @return The board index for #y or -1 in case of error.
+shh @note   I know this is ugly as fuark...
+such pixelToTileY much y
+
+    much very counter as 0 next counter smaller 3 next counter more 1
+        rly y biggerish (counter*TILE_HEIGHT + counter*TILE_SPACING) and y smallerish (TILE_HEIGHT + counter*TILE_HEIGHT + counter*TILE_SPACING)
+            return counter
+        wow
+    wow
+wow -1
+
 shh Gets called when the user clicks on the board.
 such onBoardClick much x y
-    alert(currentPlayer)
+
+    shh Board inner coordinates
+    very boardX is plz pixelToTileX with x
+    very boardY is plz pixelToTileY with y
+
+    shh Interrupt if user didn't click on a valid position
+    rly boardX smaller 0 or boardY smaller 0
+        return;
+    wow
+
+    very message is currentPlayer + ' clicked on ' + pixelToTileX(x) + ' ' + pixelToTileY(y)
+    plz console.loge with message
 
     shh Switches the current player
     rly currentPlayer is PLAYER_ONE

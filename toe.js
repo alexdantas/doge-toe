@@ -135,9 +135,46 @@ context.fillRect(x, y, TILE_WIDTH, TILE_HEIGHT);
 } 
 } 
 
+// Converts between pixel coordinates and tiles within a board. 
+// @return The board index for #x or -1 in case of error. 
+// @note I know this is ugly as fuark... 
+function pixelToTileX (x) { 
+
+for ( var counter  = 0 ; counter  < 3 ; counter  += 1 ) {
+if (x  >= (counter*TILE_WIDTH + counter*TILE_SPACING)  && x  <= (TILE_WIDTH + counter*TILE_WIDTH + counter*TILE_SPACING) ) {
+            return counter
+} 
+} 
+return -1;
+} 
+
+// Converts between pixel coordinates and tiles within a board. 
+// @return The board index for #y or -1 in case of error. 
+// @note I know this is ugly as fuark... 
+function pixelToTileY (y) { 
+
+for ( var counter  = 0 ; counter  < 3 ; counter  += 1 ) {
+if (y  >= (counter*TILE_HEIGHT + counter*TILE_SPACING)  && y  <= (TILE_HEIGHT + counter*TILE_HEIGHT + counter*TILE_SPACING) ) {
+            return counter
+} 
+} 
+return -1;
+} 
+
 // Gets called when the user clicks on the board. 
 function onBoardClick (x, y) { 
-    alert(currentPlayer)
+
+// Board inner coordinates 
+var boardX = pixelToTileX(x);
+var boardY = pixelToTileY(y);
+
+// Interrupt if user didn't click on a valid position 
+if (boardX  < 0  || boardY  < 0 ) {
+        return;
+} 
+
+var message = currentPlayer + ' clicked on ' + pixelToTileX(x) + ' ' + pixelToTileY(y) ;
+console.log(message);
 
 // Switches the current player 
 if (currentPlayer  === PLAYER_ONE ) {
