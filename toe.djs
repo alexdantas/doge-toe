@@ -191,9 +191,9 @@ such wonGame
         return true;
     wow
 
-    one   is board[2][2]
+    one   is board[0][2]
     two   is board[1][1]
-    three is board[0][0]
+    three is board[2][0]
 
     rly one is two and two is three and three not TILE_EMPTY
         return true;

@@ -194,9 +194,9 @@ if (one  === two  && two  === three  && three  !== TILE_EMPTY ) {
         return true;
 } 
 
-one = board[2][2] 
+one = board[0][2] 
 two = board[1][1] 
-three = board[0][0] 
+three = board[2][0] 
 
 if (one  === two  && two  === three  && three  !== TILE_EMPTY ) {
         return true;
