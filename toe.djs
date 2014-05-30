@@ -140,8 +140,8 @@ shh @note   I know this is ugly as fuark...
 such pixelToTileX much x
 
     much very counter as 0 next counter smaller 3 next counter more 1
-        rly x biggerish (counter*TILE_WIDTH + counter*TILE_SPACING) and x smallerish (TILE_WIDTH + counter*TILE_WIDTH + counter*TILE_SPACING)
-            return counter
+        rly x biggerish (BOARD_OFFSET_X + counter*TILE_WIDTH + counter*TILE_SPACING) and x smallerish (BOARD_OFFSET_X + TILE_WIDTH + counter*TILE_WIDTH + counter*TILE_SPACING)
+            return counter;
         wow
     wow
 wow -1
@@ -152,8 +152,8 @@ shh @note   I know this is ugly as fuark...
 such pixelToTileY much y
 
     much very counter as 0 next counter smaller 3 next counter more 1
-        rly y biggerish (counter*TILE_HEIGHT + counter*TILE_SPACING) and y smallerish (TILE_HEIGHT + counter*TILE_HEIGHT + counter*TILE_SPACING)
-            return counter
+        rly y biggerish (BOARD_OFFSET_Y + counter*TILE_HEIGHT + counter*TILE_SPACING) and y smallerish (BOARD_OFFSET_Y + TILE_HEIGHT + counter*TILE_HEIGHT + counter*TILE_SPACING)
+            return counter;
         wow
     wow
 wow -1

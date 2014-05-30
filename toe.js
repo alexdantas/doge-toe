@@ -141,8 +141,8 @@ context.fillRect(x, y, TILE_WIDTH, TILE_HEIGHT);
 function pixelToTileX (x) { 
 
 for ( var counter  = 0 ; counter  < 3 ; counter  += 1 ) {
-if (x  >= (counter*TILE_WIDTH + counter*TILE_SPACING)  && x  <= (TILE_WIDTH + counter*TILE_WIDTH + counter*TILE_SPACING) ) {
-            return counter
+if (x  >= (BOARD_OFFSET_X + counter*TILE_WIDTH + counter*TILE_SPACING)  && x  <= (BOARD_OFFSET_X + TILE_WIDTH + counter*TILE_WIDTH + counter*TILE_SPACING) ) {
+            return counter;
 } 
 } 
 return -1;
@@ -154,8 +154,8 @@ return -1;
 function pixelToTileY (y) { 
 
 for ( var counter  = 0 ; counter  < 3 ; counter  += 1 ) {
-if (y  >= (counter*TILE_HEIGHT + counter*TILE_SPACING)  && y  <= (TILE_HEIGHT + counter*TILE_HEIGHT + counter*TILE_SPACING) ) {
-            return counter
+if (y  >= (BOARD_OFFSET_Y + counter*TILE_HEIGHT + counter*TILE_SPACING)  && y  <= (BOARD_OFFSET_Y + TILE_HEIGHT + counter*TILE_HEIGHT + counter*TILE_SPACING) ) {
+            return counter;
 } 
 } 
 return -1;
