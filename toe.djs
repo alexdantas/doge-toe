@@ -173,6 +173,16 @@ such onBoardClick much x y
     very message is currentPlayer + ' clicked on ' + pixelToTileX(x) + ' ' + pixelToTileY(y)
     plz console.loge with message
 
+    shh Places thing on the board and check for winner
+    rly board[boardX][boardY] is TILE_EMPTY
+
+        rly currentPlayer is PLAYER_ONE
+            board[boardX][boardY] is TILE_X
+        but
+            board[boardX][boardY] is TILE_O
+        wow
+    wow
+
     shh Switches the current player
     rly currentPlayer is PLAYER_ONE
         currentPlayer is PLAYER_TWO
