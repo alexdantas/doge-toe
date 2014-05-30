@@ -161,6 +161,57 @@ if (y  >= (BOARD_OFFSET_Y + counter*TILE_HEIGHT + counter*TILE_SPACING)  && y  <
 return -1;
 } 
 
+// Checks if the current player won the game 
+// It iterates through the board, checking por three 
+// equal tiles. 
+function wonGame () { 
+
+// Temporary variables 
+var one = undefined;
+var two = undefined;
+var three = undefined;
+
+// First, let's check the diagonals 
+one = board[0][0] 
+two = board[1][1] 
+three = board[2][2] 
+
+if (one  === two  && two  === three  && three  !== TILE_EMPTY ) {
+        return true;
+} 
+
+one = board[2][2] 
+two = board[1][1] 
+three = board[0][0] 
+
+if (one  === two  && two  === three  && three  !== TILE_EMPTY ) {
+        return true;
+} 
+
+for ( var counter  = 0 ; counter  < 3 ; counter  += 1 ) {
+
+// Horizontal win 
+one = board[counter][0] 
+two = board[counter][1] 
+three = board[counter][2] 
+
+if (one  === two  && two  === three  && three  !== TILE_EMPTY ) {
+            return true;
+} 
+
+// Vertical win 
+one = board[0][counter] 
+two = board[1][counter] 
+three = board[2][counter] 
+
+if (one  === two  && two  === three  && three  !== TILE_EMPTY ) {
+            return true;
+} 
+} 
+
+return false;
+} 
+
 // Gets called when the user clicks on the board. 
 function onBoardClick (x, y) { 
 
@@ -173,20 +224,26 @@ if (boardX  < 0  || boardY  < 0 ) {
         return;
 } 
 
-var message = currentPlayer + ' clicked on ' + pixelToTileX(x) + ' ' + pixelToTileY(y) ;
-console.log(message);
-
-// Places thing on the board and check for winner 
+// Only continue if we can place the thing 
+// (current tile not empty) 
 if (board[boardX][boardY]  !== TILE_EMPTY ) {
         return;
 } 
 
+// Placing thing according to current player 
 if (currentPlayer  === PLAYER_ONE ) {
 board[boardX][boardY] = TILE_X 
 } else {
 board[boardX][boardY] = TILE_O 
 } 
+
+// Refreshing board 
 drawBoard();
+
+// Checking for winner 
+if (wonGame() ) {
+alert(currentPlayer);
+} 
 
 // Switches the current player 
 if (currentPlayer  === PLAYER_ONE ) {

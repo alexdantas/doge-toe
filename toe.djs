@@ -158,6 +158,56 @@ such pixelToTileY much y
     wow
 wow -1
 
+shh Checks if the current player won the game
+shh It iterates through the board, checking por three
+shh equal tiles.
+such wonGame
+
+    shh Temporary variables
+    very one
+    very two
+    very three
+
+    shh First, let's check the diagonals
+    one   is board[0][0]
+    two   is board[1][1]
+    three is board[2][2]
+
+    rly one is two and two is three and three not TILE_EMPTY
+        return true;
+    wow
+
+    one   is board[2][2]
+    two   is board[1][1]
+    three is board[0][0]
+
+    rly one is two and two is three and three not TILE_EMPTY
+        return true;
+    wow
+
+    much very counter as 0 next counter smaller 3 next counter more 1
+
+        shh Horizontal win
+        one   is board[counter][0]
+        two   is board[counter][1]
+        three is board[counter][2]
+
+        rly one is two and two is three and three not TILE_EMPTY
+            return true;
+        wow
+
+        shh Vertical win
+        one   is board[0][counter]
+        two   is board[1][counter]
+        three is board[2][counter]
+
+        rly one is two and two is three and three not TILE_EMPTY
+            return true;
+        wow
+    wow
+
+wow false
+
 shh Gets called when the user clicks on the board.
 such onBoardClick much x y
 
@@ -170,20 +220,26 @@ such onBoardClick much x y
         return;
     wow
 
-    very message is currentPlayer + ' clicked on ' + pixelToTileX(x) + ' ' + pixelToTileY(y)
-    plz console.loge with message
-
-    shh Places thing on the board and check for winner
+    shh Only continue if we can place the thing
+    shh (current tile not empty)
     rly board[boardX][boardY] not TILE_EMPTY
         return;
     wow
 
+    shh Placing thing according to current player
     rly currentPlayer is PLAYER_ONE
     board[boardX][boardY] is TILE_X
     but
     board[boardX][boardY] is TILE_O
     wow
+
+    shh Refreshing board
     plz drawBoard
+
+    shh Checking for winner
+    rly wonGame()
+        plz alert with currentPlayer
+    wow
 
     shh Switches the current player
     rly currentPlayer is PLAYER_ONE
