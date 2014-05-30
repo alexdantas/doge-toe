@@ -1,7 +1,7 @@
 quiet
   doge toe: doge tic-tac-toe in dogescript
 
-  Homepage:  https://github.com/alexdantas/doge-toe
+  Homepage:  https://github.com/alexdantas/doge-toe/
   Author:    Alexandre Dantas (alexdantas) <eu@alexdantas.net>
   License:   WTFPL
 
