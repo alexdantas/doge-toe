@@ -11,8 +11,8 @@ quiet
     https://github.com/remixz/dogescript
   - Doge game of life:
     https://github.com/eerwitt/doge-game-of-life
-  - Get click position on Canvas:
-    http://eli.thegreenplace.net/2010/02/13/finding-out-the-mouse-click-position-on-a-canvas-with-javascript/
+  - Dogescript grunt plugin
+    https://github.com/Bartvds/grunt-dogescript
 loud
 
 shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh
@@ -59,7 +59,7 @@ such hiliteScore much player
     $(id).effect(
         "highlight",
         { color: 'green'},
-        3000
+        6000
     );
 wow
 

@@ -14,12 +14,10 @@ module.exports = function(grunt) {
 			amaze: {
 				options: {
 					// optional beautify
-					// - default: true
 					beauty: true,
 
 					// optional enable true-doge mode
-					// - default: false
-					trueDoge: true,
+					trueDoge: false,
 				},
 				src: ['toe.djs']
 			}
@@ -30,7 +28,11 @@ module.exports = function(grunt) {
 			options: {
 				banner: '/* full source code at https://github.com/alexdantas/doge-toe/ */',
 				report: 'min',
-				preserveComments: 'false'
+				preserveComments: 'false',
+				mangle: true,
+				compress: {
+					drop_console: true
+				}
 			},
 			dist: {
 				files: {
@@ -39,22 +41,24 @@ module.exports = function(grunt) {
 					]
 				}
 			}
-		}
+		},
 
-		// // After uglifying, remove the original
-		// // non-minimized file
-		// clean: [
-		// 	'toe.js'
-		// ]
+		// After uglifying, remove the original
+		// non-minimized file
+		clean: [
+			'toe.js'
+		]
 	});
 
 	grunt.loadNpmTasks('grunt-dogescript');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
+	grunt.loadNpmTasks('grunt-contrib-clean');
 
 	// Things that will run by default
 	grunt.registerTask('default', [
 		'dogescript',
-		'uglify'
+		'uglify',
+		'clean'
 	]);
 };
 
