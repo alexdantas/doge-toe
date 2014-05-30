@@ -63,6 +63,13 @@ such hiliteScore much player
     );
 wow
 
+shh Loading the images
+very player_one_image is new Image
+player_one_image.src is 'img/player-one.png'
+
+very player_two_image is new Image
+player_two_image.src is 'img/player-two.png'
+
 shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh
 shh
 shh Misc. functions
@@ -142,24 +149,24 @@ such drawBoard
     much very counterX as 0 next counterX smaller 3 next counterX more 1
        much very counterY as 0 next counterY smaller 3 next counterY more 1
 
+           shh Deciding it's position
+           very x is BOARD_OFFSET_X + (counterX * TILE_WIDTH)  + (counterX * TILE_SPACING)
+           very y is BOARD_OFFSET_Y + (counterY * TILE_HEIGHT) + (counterY * TILE_SPACING)
+
            very tile is board[counterX][counterY]
 
            shh How will we draw the tile?
            rly tile is TILE_EMPTY
                context.fillStyle is TILE_COLOR_EMPTY
+               context dose fillRect with x y TILE_WIDTH TILE_HEIGHT
 
            but rly tile is TILE_X
-               context.fillStyle is TILE_COLOR_X
+               context dose drawImage with player_one_image x y
 
            but rly tile is TILE_O
-               context.fillStyle is TILE_COLOR_O
+               context dose drawImage with player_two_image x y
 
            wow
-
-           very x is BOARD_OFFSET_X + (counterX * TILE_WIDTH)  + (counterX * TILE_SPACING)
-           very y is BOARD_OFFSET_Y + (counterY * TILE_HEIGHT) + (counterY * TILE_SPACING)
-
-           context dose fillRect with x y TILE_WIDTH TILE_HEIGHT
        wow
     wow
 wow
