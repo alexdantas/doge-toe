@@ -17,7 +17,7 @@ loud
 
 shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh
 shh
-shh Creating the Canvas and it's Context
+shh Interface: creating the Canvas, it's Context and other things on HTML
 shh
 shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh
 
@@ -44,11 +44,20 @@ such onCanvasClick much event
     plz onBoardClick with x y
 wow
 
+very player_one_score is $('#player-one')[0]
+very player_two_score is $('#player-two')[0]
+
+shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh
+shh
+shh Misc. functions
+shh
+shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh
 
 shh Returns a random number between #min and #max
 such randomBetween much min max
     very number is (Math.floor(Math.random() * (max-min+1) + min))
 wow number
+
 
 shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh
 shh
@@ -86,12 +95,17 @@ var board = [
     [TILE_EMPTY, TILE_EMPTY, TILE_EMPTY]
 ]
 
-shh All possible players
+shh All possible players and their points
 very PLAYER_ONE is 1
 very PLAYER_TWO is 2
+very PLAYER_ONE_POINTS is 0
+very PLAYER_TWO_POINTS is 0
 
 shh The player that must click right now
 very currentPlayer is plz randomBetween with PLAYER_ONE PLAYER_TWO
+
+shh Flag to tell if the game is still runnin'
+very gameOver is false
 
 shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh
 shh
@@ -211,6 +225,11 @@ wow false
 shh Gets called when the user clicks on the board.
 such onBoardClick much x y
 
+    shh Do nothing if won the game and it's not reset.
+    rly gameOver
+        return;
+    wow
+
     shh Board inner coordinates
     very boardX is plz pixelToTileX with x
     very boardY is plz pixelToTileY with y
@@ -238,7 +257,20 @@ such onBoardClick much x y
 
     shh Checking for winner
     rly wonGame()
-        plz alert with currentPlayer
+
+        shh Score++
+        rly currentPlayer is PLAYER_ONE
+            PLAYER_ONE_POINTS is PLAYER_ONE_POINTS + 1
+        but
+            PLAYER_TWO_POINTS is PLAYER_TWO_POINTS + 1
+        wow
+
+        shh Refreshing HTML with scores
+        player_one_score.placeholder is PLAYER_ONE_POINTS
+        player_two_score.placeholder is PLAYER_TWO_POINTS
+
+        gameOver is true
+        return;
     wow
 
     shh Switches the current player
@@ -251,7 +283,15 @@ such onBoardClick much x y
 wow
 
 shh Gets called when the window is fully loaded.
-such main
+shh Has the effect of restarting the game.
+such resetGame
+    gameOver is false
+
+    board = [
+        [TILE_EMPTY, TILE_EMPTY, TILE_EMPTY],
+        [TILE_EMPTY, TILE_EMPTY, TILE_EMPTY],
+        [TILE_EMPTY, TILE_EMPTY, TILE_EMPTY]
+    ]
     plz drawBoard
 wow
 
@@ -263,5 +303,5 @@ shh @note Couldn't figure out how to make this with Dogescript syntax
 shh
 shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh
 
-$(function() { main() });
+$(function() { resetGame() });
 

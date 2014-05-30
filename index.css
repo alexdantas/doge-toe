@@ -18,7 +18,21 @@ body {
 	/* Allow canvas to hit the edges of the browser viewport. */
 	margin: 0;
 }
-
+#container {
+	width: 340px;
+	height: 100%;
+	margin: 0 auto;
+}
+#player-one, #player-two {
+	width: 12pt;
+	font-size: 12pt;
+	text-align: center;
+	float: left;
+}
+#reset {
+	float: right;
+	font-size: 12pt;
+}
 #screen {
 	margin: auto;
 

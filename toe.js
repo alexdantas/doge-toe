@@ -17,7 +17,7 @@
 
 // shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh 
 // 
-// Creating the Canvas and it's Context 
+// Interface: creating the Canvas, it's Context and other things on HTML 
 // 
 // shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh 
 
@@ -44,12 +44,21 @@ console.log(message);
 onBoardClick(x, y);
 } 
 
+var player_one_score = $('#player-one')[0];
+var player_two_score = $('#player-two')[0];
+
+// shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh 
+// 
+// Misc. functions 
+// 
+// shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh 
 
 // Returns a random number between #min and #max 
 function randomBetween (min, max) { 
 var number = (Math.floor(Math.random() * (max-min+1) + min)) ;
 return number;
 } 
+
 
 // shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh 
 // 
@@ -87,12 +96,17 @@ var board = [
     [TILE_EMPTY, TILE_EMPTY, TILE_EMPTY]
 ]
 
-// All possible players 
+// All possible players and their points 
 var PLAYER_ONE = 1;
 var PLAYER_TWO = 2;
+var PLAYER_ONE_POINTS = 0;
+var PLAYER_TWO_POINTS = 0;
 
 // The player that must click right now 
 var currentPlayer = randomBetween(PLAYER_ONE, PLAYER_TWO);
+
+// Flag to tell if the game is still runnin' 
+var gameOver = false;
 
 // shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh 
 // 
@@ -215,6 +229,11 @@ return false;
 // Gets called when the user clicks on the board. 
 function onBoardClick (x, y) { 
 
+// Do nothing if won the game and it's not reset. 
+if (gameOver ) {
+        return;
+} 
+
 // Board inner coordinates 
 var boardX = pixelToTileX(x);
 var boardY = pixelToTileY(y);
@@ -242,7 +261,20 @@ drawBoard();
 
 // Checking for winner 
 if (wonGame() ) {
-alert(currentPlayer);
+
+// Score++ 
+if (currentPlayer  === PLAYER_ONE ) {
+PLAYER_ONE_POINTS = PLAYER_ONE_POINTS + 1 
+} else {
+PLAYER_TWO_POINTS = PLAYER_TWO_POINTS + 1 
+} 
+
+// Refreshing HTML with scores 
+player_one_score.placeholder = PLAYER_ONE_POINTS 
+player_two_score.placeholder = PLAYER_TWO_POINTS 
+
+gameOver = true 
+        return;
 } 
 
 // Switches the current player 
@@ -255,7 +287,15 @@ console.log('switched');
 } 
 
 // Gets called when the window is fully loaded. 
-function main () { 
+// Has the effect of restarting the game. 
+function resetGame () { 
+gameOver = false 
+
+    board = [
+        [TILE_EMPTY, TILE_EMPTY, TILE_EMPTY],
+        [TILE_EMPTY, TILE_EMPTY, TILE_EMPTY],
+        [TILE_EMPTY, TILE_EMPTY, TILE_EMPTY]
+    ]
 drawBoard();
 } 
 
@@ -267,6 +307,6 @@ drawBoard();
 // 
 // shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh shh 
 
-$(function() { main() });
+$(function() { resetGame() });
 
 

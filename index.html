@@ -22,7 +22,15 @@
 
   <body>
 	<!-- Here's where the action happens! -->
-	<canvas id="screen" width="340" height="340" ></canvas>
+	<div id="container">
+	  <canvas id="screen" width="340" height="340" ></canvas>
+
+
+	  <input id="player-one" type="text" width="2pt" readonly="true" placeholder="0">
+
+	  <input id="player-two" type="text" readonly="true" placeholder="0">
+	  <button id="reset" onclick="resetGame()">Reset</button>
+	</div>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	<script src="toe.js"></script>
