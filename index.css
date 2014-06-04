@@ -4,6 +4,11 @@ body {
 	background-color: #000;
 	color: #fff;
 
+	background-image: url(img/doge-boy.png);
+	background-repeat: no-repeat;
+	background-position: center top;
+	background-attachment: fixed;
+
 	/* Allow mouse dragging. */
 	-moz-user-select: none;
 	-ms-user-select: none;
@@ -24,7 +29,7 @@ body {
 	margin: 0 auto;
 }
 #container h1 {
-	text-align: center;
+	text-align: right;
 	margin: 0;
 }
 #container h2 {
@@ -50,10 +55,17 @@ body {
 	float: left;
 }
 #reset {
-	float: right;
 	font-size: 12pt;
+
+	position: relative;
+	top: 154px;
+	left: -148px;
 }
 #screen {
+	/* placing on doge-boy */
+	position: fixed;
+	top: 55px;
+
 	margin: auto;
 
 	/* Hide the gap for font descenders. */

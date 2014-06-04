@@ -105,7 +105,7 @@ very TILE_HEIGHT  is 100
 very TILE_SPACING is 10
 
 shh Colors for everything
-very BOARD_COLOR_BG   is '#999'
+very BOARD_COLOR_BG   is '#000'
 very TILE_COLOR_EMPTY is '#777'
 very TILE_COLOR_X     is 'red'
 very TILE_COLOR_O     is 'blue'
@@ -161,10 +161,16 @@ such drawBoard
                context dose fillRect with x y TILE_WIDTH TILE_HEIGHT
 
            but rly tile is TILE_X
-               context dose drawImage with player_one_image x y
+               context dose drawImage with player_one_image  x y
+
+               context.fillStyle is BOARD_COLOR_BG
+               context dose fillText  with PLAYER_ONE_POINTS x+10 y+10
 
            but rly tile is TILE_O
-               context dose drawImage with player_two_image x y
+               context dose drawImage with player_two_image  x y
+
+               context.fillStyle is BOARD_COLOR_BG
+               context dose fillText  with PLAYER_TWO_POINTS x+10 y+10
 
            wow
        wow
